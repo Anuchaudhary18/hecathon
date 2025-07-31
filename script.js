@@ -96,6 +96,11 @@ function showError(id) {
 function hideError(id) {
   document.getElementById(id).classList.add("hidden");
 }
+function logoutUser() {
+  localStorage.clear();
+  showPage('authPage');
+}
+
 
 // Photo page validation
 function goToPoints() {
