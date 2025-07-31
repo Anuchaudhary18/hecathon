@@ -1,0 +1,106 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoCrew App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="languagePopup">
+  <div>
+    <h2 style="color:white; text-align:center;">Select Language</h2>
+    <select id="languageSelect" onchange="setLanguage()">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="gu">ગુજરાત\uac0</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </div>
+</div>
+
+<header>
+  <h1 id="title">EcoCrew 🌱</h1>
+  <p id="helpline">Helpline: +91 98765 43210</p>
+</header>
+
+<nav>
+  <a onclick="showPage('authPage')">Login/Sign Up</a>
+  <a onclick="showPage('photoPage')">Upload Photo</a>
+  <a onclick="showPage('pointsPage')">Points</a>
+  <a onclick="showPage('cashbackPage')">Cashback</a>
+  <a onclick="showPage('growthPage')">Growth</a>
+</nav>
+
+<!-- AUTH PAGE -->
+<div class="container" id="authPage">
+  <div class="tab-btns">
+    <button class="active" onclick="toggleAuth('signup')" id="signupTab">Sign Up</button>
+    <button onclick="toggleAuth('login')" id="loginTab">Login</button>
+  </div>
+  <form id="signupForm">
+    <input type="file" id="profilePhoto" accept="image/*" />
+    <div id="photoError" class="error-message hidden">Profile photo is required</div>
+
+    <input type="text" id="fullName" placeholder="Full Name" />
+    <div id="nameError" class="error-message hidden">Name must be at least 5 characters</div>
+
+    <select id="gender">
+      <option value="">Select Gender</option>
+      <option>Female</option>
+      <option>Male</option>
+      <option>Other</option>
+    </select>
+    <div id="genderError" class="error-message hidden">Gender is required</div>
+
+    <input type="email" id="email" placeholder="Enter your email" />
+    <div id="emailError" class="error-message hidden">Enter valid email</div>
+
+    <input type="password" id="password" placeholder="Enter password" />
+    <div id="passwordError" class="error-message hidden">Password must be at least 10 characters</div>
+
+    <button type="button" onclick="submitSignup()">Sign Up</button>
+  </form>
+
+  <form id="loginForm" class="hidden">
+    <input type="email" id="loginEmail" placeholder="Enter your email" />
+    <input type="password" id="loginPassword" placeholder="Enter your password" />
+    <button type="button" onclick="loginUser()">Login</button>
+  </form>
+</div>
+
+<!-- PHOTO PAGE -->
+<div class="container hidden" id="photoPage">
+  <h2>Upload Before & After Photo</h2>
+  <input type="file" id="beforePhoto" accept="image/*">
+  <input type="file" id="afterPhoto" accept="image/*">
+  <button onclick="goToPoints()">Submit</button>
+</div>
+
+<!-- POINTS PAGE -->
+<div class="container hidden" id="pointsPage">
+  <h2>Your Points</h2>
+  <p>Total Points: <strong>150</strong></p>
+  <button onclick="showPage('cashbackPage')">Go to Cashback</button>
+</div>
+
+<!-- CASHBACK PAGE -->
+<div class="container hidden" id="cashbackPage">
+  <h2>Cashback Earned</h2>
+  <p>Cashback: <strong>₹50</strong></p>
+  <p>Total Points: <strong>150</strong></p>
+  <button onclick="showPage('growthPage')">See Growth</button>
+</div>
+
+<!-- GROWTH PAGE -->
+<div class="container hidden" id="growthPage">
+  <h2>Growth Chart</h2>
+  <canvas id="myChart" height="200"></canvas>
+  <p style="text-align:center; margin-top:20px; font-weight:bold; color:#28a745;">Thank You for Contributing! 🌿</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
